@@ -1,37 +1,35 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import logo from '../../images/logo.png';
+import './PrimaryNavbar.css';
 
 const PrimaryNavbar = () => {
     return (
-        <Navbar collapseOnSelect  sticky="top" expand="lg"  variant="light">
+        <Navbar collapseOnSelect  sticky="top" expand="lg"  bg="#1E1B3A
+        " variant="dark">
         <Container>
-        <Navbar.Brand href="/">
-        <img
-          alt="" 
-          src=''
-          width="35"
-          height="35"
-          className="d-inline-block align-top"
-        />{' Space'}
-     {/* <span className="fw-bold fs-4"><span className="text-danger">Tour</span> Explorer</span> */}
-      </Navbar.Brand>
+        <Navbar.Brand href="/" className='d-flex align-items-center'>
+          <img
+            alt="" 
+            src={logo}
+            width="51"
+            height="45"
+            className="d-inline-block align-top"
+          />{' '}
+          <span className="brandName">SPACE</span>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
         
-        <Nav className="ms-auto nav-conatainer d-flex align-items-center">
-           <Nav.Link as={HashLink} to='/home'>Home</Nav.Link>
-           <Nav.Link as={HashLink} to='/home'>Home</Nav.Link>
-           <Nav.Link as={HashLink} to='/home'>Home</Nav.Link>
-           <Nav.Link as={HashLink} to='/home'>Home</Nav.Link>
+        <Nav className="ms-auto d-flex align-items-lg-center align-items-start">
+           <NavLink className='navItem' as={HashLink} to='/home'>Home</NavLink>
+           <NavLink className='navItem my-lg-0 my-2' as={HashLink} to='/home'>About Us</NavLink>
+           <NavLink className='navItem ' as={HashLink} to='/home'>Story</NavLink>
+           <NavLink className='navItem my-lg-0 my-2' as={HashLink} to='/home'>Blog</NavLink>
+           <NavLink className='navItem' as={HashLink} to='/home'>Contract Us</NavLink>
 
-            <NavDropdown title="Manage Service" id="collasible-nav-dropdown">
-            <NavDropdown.Item  as={HashLink}  to="/tour/add">Add Tour Package</NavDropdown.Item>
-            <NavDropdown.Item  as={HashLink}  to="/tour/managetour">Manage Tour Package</NavDropdown.Item>
-            <NavDropdown.Item as={HashLink} to="/mybooking">My Booking</NavDropdown.Item> 
-            <NavDropdown.Item as={HashLink} to="/bookingmanage">Manage Booking</NavDropdown.Item>
-            <NavDropdown.Divider />
-            </NavDropdown>
       
         </Nav>
 
