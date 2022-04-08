@@ -52,11 +52,12 @@
 }
 
 .bannerAssetBg{
-    /* width: 850px; */
+    width: 630px;
     height: 780px;
-    top: 0%;
+   
+
     right: 0%;
-    /* right: 0%; */
+    bottom: -10%;
     /* opacity: 0.1; */
     /* transform: rotate(-4.53deg); */
 
