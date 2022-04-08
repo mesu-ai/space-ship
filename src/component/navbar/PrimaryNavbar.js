@@ -9,7 +9,7 @@ const PrimaryNavbar = () => {
     return (
         <Navbar collapseOnSelect  sticky="top" expand="lg"  bg="#1E1B3A
         " variant="dark">
-        <Container>
+        <Container >
         <Navbar.Brand href="/" className='d-flex align-items-center'>
           <img
             alt="" 

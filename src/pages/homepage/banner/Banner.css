@@ -4,31 +4,70 @@
 /* inter font */
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-.bannerBox{
-position: absolute;
-width: 122.84px;
-height: 131.14px;
-left: 0;
-top: 155px;
 
-/* background: url('/src/images/box.png'); */
-transform: rotate(-30deg);
+
+.bannerBgBlur{
+   
+    width: 120px;
+    height: 120px;  
+    top: 55%;
+    background: #30285B;
+    opacity: 0.9;
+    filter: blur(100px);
 }
+.bannerBox{
+    left: -22%;
+    width: 112.84px;
+    height: 122.14px;
+    transform: rotate(-30deg);
+    }
+
+
+    
 
 .bannerLight{
-position: absolute;
-width: 130.6px;
-height: 64.01px;
-left: 990px;
-/* right: 100px; */
-top: 50px;
-transform: rotate(-22deg);
+    
+    width: 130.6px;
+    height: 64.01px;
+    left: 60%;
+    transform: rotate(-22deg);
+
+    }
+
+.bannerGalaxy{
+    height: 100px;
+    width: 185px;
+    left: 80%;
+    top: 33%;
+    border-radius: 0px;
+    }
+
+.bannerCircle{
+    height: 118px;
+    width: 136px;
+    right: 2%;
+    bottom: 5%;
+    border-radius: 0px;
+
 }
+
+.bannerAssetBg{
+    /* width: 850px; */
+    height: 780px;
+    top: 0%;
+    right: 0%;
+    /* right: 0%; */
+    /* opacity: 0.1; */
+    /* transform: rotate(-4.53deg); */
+
+}
+
+
+
+
 .bannerWcImg{
     height: 41px;
     width: 71px;
-    left: 317px;
-    top: 234px;
     border-radius: 0px;
     margin-right: 12px;
 
@@ -45,7 +84,7 @@ transform: rotate(-22deg);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
+    /* text-fill-color: transparent; */
     text-shadow: 6px 16px 31px rgba(59, 88, 239, 0.15);
     margin-bottom: 0px;
 
@@ -92,9 +131,100 @@ transform: rotate(-22deg);
 .bannerImg{
 height: 663.1111971126436px;
 width: 630.7078162019463px;
-left: 814px;
-top: 313.2392578125px;
+/* left: 814px;
+top: 313.2392578125px; */
 border-radius: 0px;
 /* transform: rotate(-15deg); */
 
+}
+
+
+@media screen and (max-width:1262px) {
+   
+    .bannerGalaxy{
+        height: 75px;
+        width: 140px;
+        left: 77%;
+        top: 35%;
+        border-radius: 0px;
+        }
+
+
+    
+}
+
+@media screen and (max-width:1150px){
+    
+    /* .bannerBox{
+    
+        width: 65px !important;
+        height: 80px !important;
+        top: 0 !important;
+        } */
+
+    .bannerGalaxy{
+        height: 80px;
+        width: 150px;
+        left: 77%;
+        top: 35%;
+        border-radius: 0px;
+        }
+
+    
+        
+}
+
+
+@media screen and (max-width:1050px){
+    .bannerBox{
+        left: -15%;
+        width: 80px ;
+        height: 90px ;
+        
+        }
+    
+    .bannerGalaxy{
+        height: 70px;
+        width: 120px;
+        
+        }
+    
+        
+}
+
+@media screen and (max-width:992px){
+    .bannerBox{
+        left: -35%;
+        width: 100px ;
+        height: 110px ;
+        
+        }
+        
+}
+
+
+@media screen and (max-width:765px){
+    .bannerBox{
+        left: -20%;
+        width: 100px ;
+        height: 110px ;
+        
+        }
+        .bannerCircle{
+            height: 85px;
+            width: 100px;
+            
+        
+        }
+        
+}
+
+@media screen and (max-width:580px){
+    .bannerGalaxy{
+        height: 60px;
+        width: 90px;
+        top: 37%;
+        
+        }
+        
 }
