@@ -1,0 +1,100 @@
+/*russo font */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+/* inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.bannerBox{
+position: absolute;
+width: 122.84px;
+height: 131.14px;
+left: 0;
+top: 155px;
+
+/* background: url('/src/images/box.png'); */
+transform: rotate(-30deg);
+}
+
+.bannerLight{
+position: absolute;
+width: 130.6px;
+height: 64.01px;
+left: 990px;
+/* right: 100px; */
+top: 50px;
+transform: rotate(-22deg);
+}
+.bannerWcImg{
+    height: 41px;
+    width: 71px;
+    left: 317px;
+    top: 234px;
+    border-radius: 0px;
+    margin-right: 12px;
+
+}
+
+.bannerWc{
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0em;
+    text-align: left;
+    background: linear-gradient(95.79deg, #2317FA -33.63%, #D529E4 97.49%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-shadow: 6px 16px 31px rgba(59, 88, 239, 0.15);
+    margin-bottom: 0px;
+
+}
+
+.bannerTitle{
+    color: #FFFFFF;
+    font-family: 'Russo One', sans-serif;
+    font-size: 75px;
+    font-weight: 400;
+    line-height: 99px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.bannerBody{
+    color: #DADADA;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.bannerBtn{
+    float: left;
+    padding: 22px 77px 22px 77px;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0em;
+    text-align: left;
+    box-shadow: 6px 16px 31px 8px rgba(59, 88, 239, 0.15);
+    border-radius: 0px;
+    background: linear-gradient(95.48deg, #2317FA -1.25%, #D529E4 97.48%);
+
+}
+
+.bannerImg{
+height: 663.1111971126436px;
+width: 630.7078162019463px;
+left: 814px;
+top: 313.2392578125px;
+border-radius: 0px;
+/* transform: rotate(-15deg); */
+
+}
