@@ -52,20 +52,18 @@
 }
 
 .bannerAssetBg{
-    width: 800px;
-    height: 670px;
-   /* width: 610px;
-   height: 690px; */
-   
-
+    /* width: 800px;
+    height: 670px; 
     right: -10%;
+    transform: rotate(-7.53deg); */
+    width: 610px;
+    height: 690px;
+    right: 0%;
+
     bottom: 5%;
     /* opacity: 0.1; */
-    transform: rotate(-7.53deg);
-    /* overflow-x: hidden; */
 
 }
-
 
 
 

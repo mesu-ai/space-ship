@@ -39,7 +39,7 @@ const Banner = () => {
               <img className='bannerImg img-fluid' src={asset} alt="" />
               <img className='bannerLight position-absolute top-0' src={light} alt="" />
               <img className='bannerGalaxy position-absolute' src={galaxy} alt="" />
-              {/* <img className='position-absolute  bannerAssetBg ' src={assetbg} alt="" /> */}
+              
               
             </Col>
           </Row>

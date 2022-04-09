@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   background: #1E1B3A;
-  overflow-x: hidden;
-
+  /* overflow-x: hidden; */
+  /* overflow-y: hidden; */
 }
 
