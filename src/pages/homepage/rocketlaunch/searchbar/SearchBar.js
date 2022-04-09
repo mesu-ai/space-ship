@@ -1,8 +1,11 @@
 import React from 'react';
-import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
 import './SearchBar.css';
 
-const SearchBar = () => {
+const SearchBar = ({handleSelect}) => {
+
+   
+
     return (
         <Container>
 
@@ -18,9 +21,9 @@ const SearchBar = () => {
             <div className='d-flex align-items-center'>
                 <label className='filterLabel'>Is upcoming?</label>
                 <li className='ms-4'>
-                <Form.Select aria-label="Is upcoming?" className='custom-select'>
-                    <option value="1">Yes</option>
-                    <option value="2">No</option>   
+                <Form.Select onChange={handleSelect} aria-label="Is upcoming?" className='custom-select'>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>   
                 </Form.Select>
                 </li>
             </div>

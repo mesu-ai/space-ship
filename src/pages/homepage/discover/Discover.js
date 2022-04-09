@@ -32,7 +32,7 @@ const Discover = () => {
             <p className='discoverTitle'>Discover Univerce</p>
             <Row xs={1} md={3} className="g-4 cardContainer">
                 {discovers.map((mission, idx) => (
-                    <Col>
+                    <Col key={Math.random()}>
                     <Card className={`px-3 py-4 ${idx===1?'missionCardS':'missionCardN'}`}>
                         <Card.Img variant="top" className='missionImg mx-auto' src={mission.image} />
                             <Card.Body className='p-0'>
