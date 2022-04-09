@@ -5,15 +5,17 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 
 const RocketLaunch = () => {
     const [rockets,setRockets]=useState([]);
-    const [displayRockets,setDisplayRockets]=useState([])
+    const [displayRockets,setDisplayRockets]=useState([]);
+    const [launchYear,setLaunchYear]=useState([]);
     useEffect(()=>{
         fetch('https://api.spacexdata.com/v3/launches')
         .then(res=>res.json())
         .then(data=>{
             setRockets(data);
-            
-            const upcommingLaunch=data.filter(rocket=>rocket.upcoming===true);
-            setDisplayRockets(upcommingLaunch);
+            setDisplayRockets(data);
+
+            // const upcommingLaunch=data.filter(rocket=>rocket.upcoming===true);
+            // setDisplayRockets(upcommingLaunch);
         
         })
         
@@ -21,28 +23,95 @@ const RocketLaunch = () => {
 
     // console.log(rockets);
 
-    const handleSelect=(e)=>{
+    const handleUpcoming=(e)=>{
 
         const value=e.target.value;
-        console.log(value);
+       // console.log(value);
         
         if(value==='yes'){
-            const upcommingLaunch=rockets.filter(rocket=>rocket.upcoming===true);
-            setDisplayRockets(upcommingLaunch);
+            const upcomingLaunch=rockets.filter(rocket=>rocket.upcoming===true);
+            setDisplayRockets(upcomingLaunch);
         }else{
-            const upcommingLaunch=rockets.filter(rocket=>rocket.upcoming===false);
-            setDisplayRockets(upcommingLaunch);
+            const upcomingLaunch=rockets.filter(rocket=>rocket.upcoming===false);
+            setDisplayRockets(upcomingLaunch);
 
         }
 
     }
+
+    const handleLaunchYear=(e)=>{
+        const value=e.target.value;
+        console.log(value);
+
+        if(value==='Gt20'){
+            const date=new Date();
+            const currYear=date.getFullYear();
+          
+            searchLaunch(2021,currYear);
+ 
+        }
+        else if(value==='16-20'){
+            searchLaunch(2016,2020);
+        }
+        else if(value==='11-15'){
+            searchLaunch(2011,2015);
+        }
+        else if(value==='6-10'){
+            
+            searchLaunch(2006,2010);
+        }
+        else if(value==='1-5'){
+            searchLaunch(2001,2005);
+        }
+        else if(value==='96-00'){
+            searchLaunch(1996,2000);
+        }
+        else if(value==='91-95'){
+            searchLaunch(1991,1995);
+        }
+        else if(value==='90Lt'){
+            searchLaunch(1900,1990);
+        }
+
+    }
+
+    const searchLaunch=(start,end)=>{
+
+        setLaunchYear({});
+        const newlaunchYear=[];
+              
+        for(let year=start;year<=end;year++){
+           newlaunchYear.push(year);
+
+        }
+
+        // console.log(newlaunchYear);
+        setLaunchYear(newlaunchYear);
+    
+    }
+    
+
+    useEffect(()=>{
+
+        for (const year of launchYear) {
+           
+            const upcomingLaunch=rockets.filter(rocket=>rocket.launch_year===`${year}`);
+
+            if(upcomingLaunch){
+                setDisplayRockets(upcomingLaunch);
+            }
+            
+        }
+
+
+    },[launchYear, rockets])
 
 
 
 
     return (
         <div className='launchContainer'>
-            <SearchBar handleSelect={handleSelect}/>
+            <SearchBar handleUpcoming={handleUpcoming} handleLaunchYear={handleLaunchYear}/>
             <Container>
             <Row xs={1} md={3} lg={4} className="g-4 cardContainer">
                 {displayRockets.map((rocket, idx) =>(

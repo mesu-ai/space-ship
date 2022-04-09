@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
 import './SearchBar.css';
 
-const SearchBar = ({handleSelect}) => {
+const SearchBar = ({handleUpcoming,handleLaunchYear}) => {
 
    
 
@@ -21,7 +21,8 @@ const SearchBar = ({handleSelect}) => {
             <div className='d-flex align-items-center'>
                 <label className='filterLabel'>Is upcoming?</label>
                 <li className='ms-4'>
-                <Form.Select onChange={handleSelect} aria-label="Is upcoming?" className='custom-select'>
+                
+                <Form.Select onChange={handleUpcoming} aria-label="Is upcoming?" className='custom-select'>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>   
                 </Form.Select>
@@ -33,9 +34,16 @@ const SearchBar = ({handleSelect}) => {
             <div className='d-flex align-items-center'>
                 <label className='filterLabel'>Launch year?</label>
                 <li className='ms-4'>
-                <Form.Select aria-label="Is upcoming?" className='custom-select'>
-                    <option value="1">Yes</option>
-                    <option value="2">No</option>   
+                
+                <Form.Select onChange={handleLaunchYear} aria-label="Is upcoming?" className='custom-select'>
+                <option value="Gt20">Greater Than 2020</option>
+                <option value="16-20">2016 - 2020</option>
+                <option value="11-15">2011 - 2015</option>
+                <option value="6-10">2006 - 2010</option>
+                <option value="1-5">2001 - 2005</option> 
+                <option value="96-00">1996 - 2000</option>
+                <option value="91-95">1991 - 1995</option>
+                <option value="90Lt">Less Than 1990</option>          
                 </Form.Select>
                 </li>
             </div>
