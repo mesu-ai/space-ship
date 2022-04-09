@@ -8,6 +8,7 @@ const RocketLaunch = () => {
     const [displayRockets,setDisplayRockets]=useState([]);
     const [filterRockets,setFilterRockets]=useState([]);
     const [launchYear,setLaunchYear]=useState([]);
+    
 
     useEffect(()=>{
         fetch('https://api.spacexdata.com/v3/launches')
@@ -24,8 +25,30 @@ const RocketLaunch = () => {
         
     },[])
 
-    // console.log(rockets);
+    //  console.log(rockets);
 
+    // const handleSubmit=(e)=>{
+        
+    //     const field=e.target.name;
+    //     const value=e.target.value;
+
+
+    //     console.log(value);
+        
+
+
+    //     e.preventDefault();
+    // }
+
+    const handleSearch=(searchText)=>{
+        // const searchText=e.target.value;
+        console.log(searchText);
+        const findRockets=rockets.filter(rocket=>rocket.rocket.rocket_name.toLowerCase().includes(searchText.toLowerCase()));
+        setFilterRockets(findRockets);
+
+    }
+
+    
     const handleUpcoming=(e)=>{
 
         const value=e.target.value;
@@ -35,18 +58,27 @@ const RocketLaunch = () => {
             const upcomingLaunch=rockets.filter(rocket=>rocket.upcoming===true);
             setDisplayRockets(upcomingLaunch);
             setFilterRockets(upcomingLaunch);
-        }else{
+        }else if(value==='no'){
             const upcomingLaunch=rockets.filter(rocket=>rocket.upcoming===false);
             setDisplayRockets(upcomingLaunch);
             setFilterRockets(upcomingLaunch);
 
         }
 
+
     }
 
+
+    
+
+    
+
+
     const handleLaunchYear=(e)=>{
+        
         const value=e.target.value;
-        // console.log(value);
+
+        
 
         if(value==='Gt20'){
             const date=new Date();
@@ -76,6 +108,12 @@ const RocketLaunch = () => {
         }
         else if(value==='90Lt'){
             searchLaunch(1900,1990);
+        }
+        
+        else{
+            
+            setFilterRockets(rockets);
+
         }
 
     }
@@ -117,7 +155,7 @@ const RocketLaunch = () => {
 
     return (
         <div className='launchContainer'>
-            <SearchBar handleUpcoming={handleUpcoming} handleLaunchYear={handleLaunchYear}/>
+            <SearchBar handleUpcoming={handleUpcoming} handleLaunchYear={handleLaunchYear} handleSearch={handleSearch}S/>
             <Container>
             <Row xs={1} md={3} lg={4} className="g-4 cardContainer">
                 {filterRockets.map((rocket, idx) =>(
@@ -128,7 +166,7 @@ const RocketLaunch = () => {
                             <Card.Title className='missionTitle mb-3'>{rocket.mission_name}</Card.Title>
                             
                             <Card.Text className='missionText mb-2'>
-                                Rocket name: {rocket.mission_name}
+                                Rocket name: {rocket?.rocket?.rocket_name}
                             </Card.Text>
                             <Card.Text className='missionText mb-2'>
                                 Launch year: {rocket?.launch_year}
