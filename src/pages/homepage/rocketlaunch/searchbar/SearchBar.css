@@ -1,0 +1,67 @@
+/*russo font */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+/* inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
+
+
+.filterLabel{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: #ABABAB; 
+    
+}
+
+.searchBarDivider{
+    border: 1px solid #DADADA
+}
+
+
+.custom-select {
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #DADADA;
+
+    border: none;
+    background: #2D2853 url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' class='bi bi-chevron-down' viewBox='0 0 16 16'%3e%3cpath fill='white' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px !important;
+  }
+
+  
+
+
+  .searchField{
+    color: #DADADA !important;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    background: #2D2853;
+    border: 1.5px solid #DADADA;
+    box-sizing: border-box;
+    opacity: .6;
+    
+
+  }
+
+  .searchField:focus{
+      opacity: 0.9;
+      color: black !important;
+  }
+
+  .searchBtn{
+    background: #0E0D22;
+    border: 1px solid #6F6C83;
+    box-sizing: border-box;
+    border-radius: 0px;
+  }
+  
