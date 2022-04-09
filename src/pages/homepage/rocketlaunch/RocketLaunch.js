@@ -6,13 +6,16 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 const RocketLaunch = () => {
     const [rockets,setRockets]=useState([]);
     const [displayRockets,setDisplayRockets]=useState([]);
+    const [filterRockets,setFilterRockets]=useState([]);
     const [launchYear,setLaunchYear]=useState([]);
+
     useEffect(()=>{
         fetch('https://api.spacexdata.com/v3/launches')
         .then(res=>res.json())
         .then(data=>{
             setRockets(data);
             setDisplayRockets(data);
+            setFilterRockets(data);
 
             // const upcommingLaunch=data.filter(rocket=>rocket.upcoming===true);
             // setDisplayRockets(upcommingLaunch);
@@ -31,9 +34,11 @@ const RocketLaunch = () => {
         if(value==='yes'){
             const upcomingLaunch=rockets.filter(rocket=>rocket.upcoming===true);
             setDisplayRockets(upcomingLaunch);
+            setFilterRockets(upcomingLaunch);
         }else{
             const upcomingLaunch=rockets.filter(rocket=>rocket.upcoming===false);
             setDisplayRockets(upcomingLaunch);
+            setFilterRockets(upcomingLaunch);
 
         }
 
@@ -41,7 +46,7 @@ const RocketLaunch = () => {
 
     const handleLaunchYear=(e)=>{
         const value=e.target.value;
-        console.log(value);
+        // console.log(value);
 
         if(value==='Gt20'){
             const date=new Date();
@@ -95,16 +100,17 @@ const RocketLaunch = () => {
 
         for (const year of launchYear) {
            
-            const upcomingLaunch=rockets.filter(rocket=>rocket.launch_year===`${year}`);
+            const upcomingLaunch=displayRockets.filter(rocket=>rocket.launch_year===`${year}`);
 
             if(upcomingLaunch){
-                setDisplayRockets(upcomingLaunch);
+                // setDisplayRockets(upcomingLaunch);
+                setFilterRockets(upcomingLaunch);
             }
             
         }
 
 
-    },[launchYear, rockets])
+    },[displayRockets, launchYear])
 
 
 
@@ -114,7 +120,7 @@ const RocketLaunch = () => {
             <SearchBar handleUpcoming={handleUpcoming} handleLaunchYear={handleLaunchYear}/>
             <Container>
             <Row xs={1} md={3} lg={4} className="g-4 cardContainer">
-                {displayRockets.map((rocket, idx) =>(
+                {filterRockets.map((rocket, idx) =>(
                     <Col key={Math.random()}>
                     <Card className='px-3 py-4 missionCardN h-100'>
                         <Card.Img variant="top" className='rocketImg mx-auto' src={rocket.links.mission_patch_small} />

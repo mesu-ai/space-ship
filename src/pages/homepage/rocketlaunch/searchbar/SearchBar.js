@@ -23,6 +23,7 @@ const SearchBar = ({handleUpcoming,handleLaunchYear}) => {
                 <li className='ms-4'>
                 
                 <Form.Select onChange={handleUpcoming} aria-label="Is upcoming?" className='custom-select'>
+                    <option value="select">Select</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>   
                 </Form.Select>
@@ -36,6 +37,8 @@ const SearchBar = ({handleUpcoming,handleLaunchYear}) => {
                 <li className='ms-4'>
                 
                 <Form.Select onChange={handleLaunchYear} aria-label="Is upcoming?" className='custom-select'>
+
+                <option value="select">Select</option>
                 <option value="Gt20">Greater Than 2020</option>
                 <option value="16-20">2016 - 2020</option>
                 <option value="11-15">2011 - 2015</option>
