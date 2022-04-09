@@ -1,13 +1,13 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import './Banner.css';
-import asset from '../../../images/Asset.png';
-import assetbg from '../../../images/assetbg.png';
-import earth from '../../../images/earth.png';
-import box from '../../../images/box.png';
-import circle from '../../../images/circle.png';
-import light from '../../../images/light.png';
-import galaxy from '../../../images/galaxy.png';
+import asset from '../../../images/banner/Asset.png';
+import assetbg from '../../../images/banner/assetbg.png';
+import earth from '../../../images/banner/earth.png';
+import box from '../../../images/banner/box.png';
+import circle from '../../../images/banner/circle.png';
+import light from '../../../images/banner/light.png';
+import galaxy from '../../../images/banner/galaxy.png';
 
 
 const Banner = () => {
