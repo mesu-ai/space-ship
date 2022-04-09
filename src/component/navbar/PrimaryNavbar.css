@@ -4,6 +4,8 @@
 /* inter font */
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+
+
 .brandName{
 
 margin-left: 16px;
@@ -28,6 +30,15 @@ line-height: 19px;
 letter-spacing: 0em;
 text-align: left;
 margin-left: 62px;
+
+
+}
+
+.lastItem{
+    padding: 12px 14px 12px 14px;
+    border-style: solid;
+    border-width: 2px;
+    border-image:linear-gradient(107.19deg, #6B1EF1 2.55%, #CB28E5 61.82%) 1;
 
 }
 

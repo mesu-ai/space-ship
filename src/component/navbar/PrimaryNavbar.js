@@ -9,7 +9,7 @@ const PrimaryNavbar = () => {
     return (
         <Navbar collapseOnSelect  sticky="top" expand="lg"  bg="#1E1B3A
         " variant="dark">
-        <Container >
+        <Container>
         <Navbar.Brand href="/" className='d-flex align-items-center'>
           <img
             alt="" 
@@ -28,7 +28,7 @@ const PrimaryNavbar = () => {
            <NavLink className='navItem my-lg-0 my-2' as={HashLink} to='/home'>About Us</NavLink>
            <NavLink className='navItem ' as={HashLink} to='/home'>Story</NavLink>
            <NavLink className='navItem my-lg-0 my-2' as={HashLink} to='/home'>Blog</NavLink>
-           <NavLink className='navItem' as={HashLink} to='/home'>Contract Us</NavLink>
+           <NavLink className='navItem lastItem' as={HashLink} to='/home'>Contract Us</NavLink>
 
       
         </Nav>
