@@ -11,6 +11,7 @@ const RocketLaunch = () => {
     const [searchRocket,setSearchRocket]=useState(false);
 
     const [launchYear,setLaunchYear]=useState([]);
+    
     const [loading,setLoading]=useState(false);
 
     const [currentPage,setCurrentPage]=useState(1);
@@ -19,7 +20,7 @@ const RocketLaunch = () => {
     
 
     useEffect(()=>{
-        setLoading(true);
+         setLoading(true);
         fetch('https://api.spacexdata.com/v3/launches')
         .then(res=>res.json())
         .then(data=>{
@@ -34,7 +35,7 @@ const RocketLaunch = () => {
 
             setShowRockets(currentPost);
 
-            setLoading(false);
+             setLoading(false);
 
         
         })
@@ -44,23 +45,23 @@ const RocketLaunch = () => {
     
     const handleSearch=(searchText)=>{
         // const searchText=e.target.value;
-        setLoading(true);
+         setLoading(true);
         console.log(searchText);
         const findRockets=rockets.filter(rocket=>rocket.rocket.rocket_name.toLowerCase().includes(searchText.toLowerCase()));
         
 
         if(findRockets){
             checkPagination(findRockets);
-            setLoading(false);
+            // setLoading(false);
 
         }else{
             setSearchRocket(true);
-            setLoading(false);
+             setLoading(false);
             
         }
 
         
-        setLoading(false);
+        
 
     }
 
@@ -155,7 +156,7 @@ const RocketLaunch = () => {
 
 
     const checkPagination = React.useCallback((data) => { 
-           setLoading(true);
+            setLoading(true);
 
         //   console.log(data);
            if(data){
@@ -165,16 +166,17 @@ const RocketLaunch = () => {
             setShowRockets(currentPost);
             setDisplayRockets(data);
 
-            setLoading(false);
+             setLoading(false);
 
            }
+           setLoading(false);
             
 
         }, [currentPage, postsPerPage]);
     
 
     useEffect(()=>{
-        setLoading(true);
+         setLoading(true);
 
         for (const year of launchYear) {
            
@@ -183,12 +185,15 @@ const RocketLaunch = () => {
             if(upcomingLaunch){
                 setDisplayRockets(upcomingLaunch);
                 checkPagination(upcomingLaunch);
-                setLoading(false);
+                 setLoading(false);
                 
 
             }
+
+            
             
         }
+        setLoading(false);
 
 
     },[checkPagination, launchYear, rockets]);
@@ -205,12 +210,12 @@ const RocketLaunch = () => {
         <div className='launchContainer'>
             <SearchBar handleUpcoming={handleUpcoming} handleLaunchYear={handleLaunchYear} handleSearch={handleSearch}S/>
             
-            {loading && 
+            {loading? 
 
             <>
             <Spinner animation="border" variant="danger" className='mt-5'/>
             <p className='text-light'>Data Loading...</p>
-            </> 
+            </>:<></>
              }
 
              {searchRocket &&
