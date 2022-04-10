@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import SearchBar from './searchbar/SearchBar';
 import './RocketLaunch.css';
-// import {is_required} from "@xari/is_required"
-import { Card, Col, Container, Pagination, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row, Spinner } from 'react-bootstrap';
 import PostPagination from './postpagination/PostPagination';
 
 const RocketLaunch = () => {
     const [rockets,setRockets]=useState([]);
     const [displayRockets,setDisplayRockets]=useState([]);
-    const [filterRockets,setFilterRockets]=useState([]);
+    const [showRockets,setShowRockets]=useState([]);
+    const [searchRocket,setSearchRocket]=useState(false);
+
     const [launchYear,setLaunchYear]=useState([]);
     const [loading,setLoading]=useState(false);
 
@@ -23,33 +24,41 @@ const RocketLaunch = () => {
         .then(res=>res.json())
         .then(data=>{
             setRockets(data);
-            // setDisplayRockets(data);
-            // setFilterRockets(data);
+            setDisplayRockets(data);
+            
 
             // get current posts
-    const indexOfLastPost= currentPage * postsPerPage;
-    const indexOfFirstPost= indexOfLastPost - postsPerPage;
-    const currentPost= data.slice(indexOfFirstPost,indexOfLastPost);
-    setFilterRockets(currentPost);
-    setDisplayRockets(currentPost);
+            const indexOfLastPost= currentPage * postsPerPage;
+            const indexOfFirstPost= indexOfLastPost - postsPerPage;
+            const currentPost= data.slice(indexOfFirstPost,indexOfLastPost);
+
+            setShowRockets(currentPost);
 
             setLoading(false);
 
-
-            // const upcommingLaunch=data.filter(rocket=>rocket.upcoming===true);
-            // setDisplayRockets(upcommingLaunch);
         
         })
         
     },[currentPage, postsPerPage])
 
     
-
     const handleSearch=(searchText)=>{
         // const searchText=e.target.value;
+        setLoading(true);
         console.log(searchText);
         const findRockets=rockets.filter(rocket=>rocket.rocket.rocket_name.toLowerCase().includes(searchText.toLowerCase()));
-        setFilterRockets(findRockets);
+        
+
+        if(findRockets){
+            checkPagination(findRockets);
+
+        }else{
+            setSearchRocket(true);
+            
+        }
+
+        
+        setLoading(false);
 
     }
 
@@ -57,28 +66,37 @@ const RocketLaunch = () => {
     const handleUpcoming=(e)=>{
 
         const value=e.target.value;
-       // console.log(value);
+        // console.log(value);
         
         if(value==='yes'){
             const upcomingLaunch=rockets.filter(rocket=>rocket.upcoming===true);
-            setDisplayRockets(upcomingLaunch);
-            setFilterRockets(upcomingLaunch);
+            if(upcomingLaunch){
+                checkPagination(upcomingLaunch);
+
+            }
+            
+            
         }else if(value==='no'){
             const upcomingLaunch=rockets.filter(rocket=>rocket.upcoming===false);
-            setDisplayRockets(upcomingLaunch);
-            setFilterRockets(upcomingLaunch);
+
+            if(upcomingLaunch){
+                checkPagination(upcomingLaunch);
+
+            }
+            
 
         }
 
     }
+
+   
 
 
 
     const handleLaunchYear=(e)=>{
         
         const value=e.target.value;
-
-        
+        // console.log(value);
 
         if(value==='Gt20'){
             const date=new Date();
@@ -112,7 +130,7 @@ const RocketLaunch = () => {
         
         else{
             
-            setFilterRockets(rockets);
+            // setFilterRockets(rockets);
 
         }
 
@@ -132,28 +150,48 @@ const RocketLaunch = () => {
         setLaunchYear(newlaunchYear);
     
     }
+
+
+    const checkPagination = React.useCallback((data) => { 
+           setLoading(true);
+
+           console.log(data);
+           if(data){
+            const indexOfLastPost= currentPage * postsPerPage;
+            const indexOfFirstPost= indexOfLastPost - postsPerPage;
+            const currentPost= data.slice(indexOfFirstPost,indexOfLastPost);
+            setShowRockets(currentPost);
+            setDisplayRockets(data);
+
+            setLoading(false);
+
+           }
+            
+
+        }, [currentPage, postsPerPage]);
     
 
     useEffect(()=>{
+        setLoading(true);
 
         for (const year of launchYear) {
            
-            const upcomingLaunch=displayRockets.filter(rocket=>rocket.launch_year===`${year}`);
+            const upcomingLaunch=rockets.filter(rocket=>rocket.launch_year===`${year}`);
 
             if(upcomingLaunch){
-                // setDisplayRockets(upcomingLaunch);
-                setFilterRockets(upcomingLaunch);
+                setDisplayRockets(upcomingLaunch);
+                checkPagination(upcomingLaunch);
+                
+
             }
             
         }
 
 
-    },[displayRockets, launchYear])
+    },[checkPagination, launchYear, rockets]);
 
 
-    // if(loading){
-    //     return <h2>Loading...</h2>;
-    // }
+    
 
 
     const paginate=(pageNumber)=>{
@@ -162,15 +200,26 @@ const RocketLaunch = () => {
     }
 
 
-    
-
 
     return (
         <div className='launchContainer'>
             <SearchBar handleUpcoming={handleUpcoming} handleLaunchYear={handleLaunchYear} handleSearch={handleSearch}S/>
+            
+            {loading && 
+
+            <>
+            <Spinner animation="border" variant="danger" className='mt-5'/>
+            <p className='text-light'>Data Loading...</p>
+            </> 
+             }
+
+             {searchRocket &&
+             <h2 className='text-light mt-5'>No Rocket Found !</h2>
+             
+             }
             <Container>
             <Row xs={1} md={3} lg={4} className="g-4 cardContainer">
-                {filterRockets.map((rocket, idx) =>(
+                {showRockets.map((rocket, idx) =>(
                     <Col key={Math.random()}>
                     <Card className='px-3 py-4 missionCardN h-100'>
                         <Card.Img variant="top" className='rocketImg mx-auto' src={rocket.links.mission_patch_small} />
@@ -192,9 +241,10 @@ const RocketLaunch = () => {
                 ))}
             </Row>
 
-            <div className="my-5">
-                <PostPagination postsPerPage={postsPerPage} totalPosts={rockets.length} paginate={paginate}/>
-                    
+            <div className="my-5 d-flex justify-content-center">
+                
+                <PostPagination postsPerPage={postsPerPage} totalPosts={displayRockets.length} paginate={paginate}/>
+                 
     
             </div>
 

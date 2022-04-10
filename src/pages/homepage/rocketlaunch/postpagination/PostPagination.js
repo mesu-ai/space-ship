@@ -15,12 +15,12 @@ const PostPagination = ({postsPerPage,totalPosts,paginate}) => {
     return (
     
             <>
-            <Pagination key={Math.random()}>
+            <Pagination >
                 {/* <Pagination.Prev onClick={()=>paginate(n-1)}/> */}
 
                 { 
                    pageNumbers.map(number=>(
-                    <Pagination.Item onClick={()=>paginate(number)}>{number}</Pagination.Item>)
+                    <Pagination.Item onClick={()=>paginate(number)} key={Math.random()}>{number}</Pagination.Item>)
                             
                 )}
             {/* <Pagination.Next onClick={()=>paginate(n+1)}/> */}
