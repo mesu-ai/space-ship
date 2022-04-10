@@ -1,44 +1,49 @@
 import React, { useEffect, useState } from 'react';
 import SearchBar from './searchbar/SearchBar';
 import './RocketLaunch.css';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+// import {is_required} from "@xari/is_required"
+import { Card, Col, Container, Pagination, Row } from 'react-bootstrap';
+import PostPagination from './postpagination/PostPagination';
 
 const RocketLaunch = () => {
     const [rockets,setRockets]=useState([]);
     const [displayRockets,setDisplayRockets]=useState([]);
     const [filterRockets,setFilterRockets]=useState([]);
     const [launchYear,setLaunchYear]=useState([]);
+    const [loading,setLoading]=useState(false);
+
+    const [currentPage,setCurrentPage]=useState(1);
+    const [postsPerPage]= useState(8);
+    
     
 
     useEffect(()=>{
+        setLoading(true);
         fetch('https://api.spacexdata.com/v3/launches')
         .then(res=>res.json())
         .then(data=>{
             setRockets(data);
-            setDisplayRockets(data);
-            setFilterRockets(data);
+            // setDisplayRockets(data);
+            // setFilterRockets(data);
+
+            // get current posts
+    const indexOfLastPost= currentPage * postsPerPage;
+    const indexOfFirstPost= indexOfLastPost - postsPerPage;
+    const currentPost= data.slice(indexOfFirstPost,indexOfLastPost);
+    setFilterRockets(currentPost);
+    setDisplayRockets(currentPost);
+
+            setLoading(false);
+
 
             // const upcommingLaunch=data.filter(rocket=>rocket.upcoming===true);
             // setDisplayRockets(upcommingLaunch);
         
         })
         
-    },[])
+    },[currentPage, postsPerPage])
 
-    //  console.log(rockets);
-
-    // const handleSubmit=(e)=>{
-        
-    //     const field=e.target.name;
-    //     const value=e.target.value;
-
-
-    //     console.log(value);
-        
-
-
-    //     e.preventDefault();
-    // }
+    
 
     const handleSearch=(searchText)=>{
         // const searchText=e.target.value;
@@ -65,13 +70,8 @@ const RocketLaunch = () => {
 
         }
 
-
     }
 
-
-    
-
-    
 
 
     const handleLaunchYear=(e)=>{
@@ -151,6 +151,18 @@ const RocketLaunch = () => {
     },[displayRockets, launchYear])
 
 
+    // if(loading){
+    //     return <h2>Loading...</h2>;
+    // }
+
+
+    const paginate=(pageNumber)=>{
+        setCurrentPage(pageNumber);
+        console.log(pageNumber);
+    }
+
+
+    
 
 
     return (
@@ -179,6 +191,13 @@ const RocketLaunch = () => {
                 </Col>  
                 ))}
             </Row>
+
+            <div className="my-5">
+                <PostPagination postsPerPage={postsPerPage} totalPosts={rockets.length} paginate={paginate}/>
+                    
+    
+            </div>
+
             </Container>
         </div>
     );
