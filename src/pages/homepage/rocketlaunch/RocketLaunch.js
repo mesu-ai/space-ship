@@ -155,7 +155,7 @@ const RocketLaunch = () => {
     const checkPagination = React.useCallback((data) => { 
            setLoading(true);
 
-           console.log(data);
+        //   console.log(data);
            if(data){
             const indexOfLastPost= currentPage * postsPerPage;
             const indexOfFirstPost= indexOfLastPost - postsPerPage;
@@ -196,7 +196,7 @@ const RocketLaunch = () => {
 
     const paginate=(pageNumber)=>{
         setCurrentPage(pageNumber);
-        console.log(pageNumber);
+       // console.log(pageNumber);
     }
 
 
@@ -241,7 +241,7 @@ const RocketLaunch = () => {
                 ))}
             </Row>
 
-            <div className="my-5 d-flex justify-content-center">
+            <div className="mt-5 d-flex justify-content-center">
                 
                 <PostPagination postsPerPage={postsPerPage} totalPosts={displayRockets.length} paginate={paginate}/>
                  

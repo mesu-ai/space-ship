@@ -3,6 +3,7 @@ import Home from './pages/homepage/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NotFind from './pages/notfind/NotFind';
 import PrimaryNavbar from './component/navbar/PrimaryNavbar';
+import Footer from './component/footer/Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
 
 
       </Routes>
+      <Footer/>
       </BrowserRouter>
       
     </div>
