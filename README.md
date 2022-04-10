@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 ##Live site (netlify deploy)
--  
+-  https://space-lauch.netlify.app/
 
 ##github link FrontEnd
 - https://github.com/mesu-ai/space-ship

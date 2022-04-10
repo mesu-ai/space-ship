@@ -26,7 +26,7 @@ const RocketLaunch = () => {
             setRockets(data);
             setDisplayRockets(data);
             
-
+            
             // get current posts
             const indexOfLastPost= currentPage * postsPerPage;
             const indexOfFirstPost= indexOfLastPost - postsPerPage;
@@ -51,9 +51,11 @@ const RocketLaunch = () => {
 
         if(findRockets){
             checkPagination(findRockets);
+            setLoading(false);
 
         }else{
             setSearchRocket(true);
+            setLoading(false);
             
         }
 
@@ -181,6 +183,7 @@ const RocketLaunch = () => {
             if(upcomingLaunch){
                 setDisplayRockets(upcomingLaunch);
                 checkPagination(upcomingLaunch);
+                setLoading(false);
                 
 
             }
@@ -189,9 +192,6 @@ const RocketLaunch = () => {
 
 
     },[checkPagination, launchYear, rockets]);
-
-
-    
 
 
     const paginate=(pageNumber)=>{
