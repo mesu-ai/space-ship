@@ -103,6 +103,8 @@
 
 }
 
+
+
 .bannerBody{
     color: #DADADA;
     font-family: 'Inter', sans-serif;
@@ -190,6 +192,11 @@ border-radius: 0px;
         width: 120px;
         
         }
+    .bannerTitle{
+        font-size: 50px;
+        line-height: 70px;
+    
+        }
     
         
 }
@@ -200,6 +207,12 @@ border-radius: 0px;
         width: 100px ;
         height: 110px ;
         
+        }
+    .bannerTitle{
+        margin-top: 20px;
+        font-size: 40px;
+        line-height: 50px;
+    
         }
         
 }
@@ -227,6 +240,12 @@ border-radius: 0px;
         width: 90px;
         top: 37%;
         
+        }
+    .bannerTitle{
+        margin-top: 15px;
+        font-size: 35px;
+        line-height: 30px;
+    
         }
         
 }

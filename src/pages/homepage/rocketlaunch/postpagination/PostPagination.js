@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
+import './PostPagination.css';
 
 const PostPagination = ({postsPerPage,totalPosts,paginate}) => {
     const pageNumbers=[];
@@ -10,13 +11,16 @@ const PostPagination = ({postsPerPage,totalPosts,paginate}) => {
     return (
     
             <>
-            <Pagination >
+            <Pagination className='d-flex flex-sm-row flex-column flex-warp'>
 
                 { 
                    pageNumbers.map(number=>(
-                    <Pagination.Item onClick={()=>paginate(number)} key={Math.random()}>{number}</Pagination.Item>)
+                    <Pagination.Item  onClick={()=>paginate(number)} key={Math.random()}>{number}</Pagination.Item>
+
+                    )
                             
                 )}
+                
         </Pagination>
         
             

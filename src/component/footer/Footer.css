@@ -23,7 +23,7 @@
 
 }
 
-.emailSubscriber{
+.emailSubscribe{
     height: 57px;
     width: 414px;
     border-radius: 0px;
@@ -36,19 +36,21 @@
     background: #18163B;
     border: 2px solid #454466;
     box-sizing: border-box;
+    padding: 15px;
 
 }
-.emailSubscriber:focus{
+.emailSubscribe:focus{
     opacity: 0.9;
     color: black !important;
 }
 
 .subscribBtn{
-    background: #18163B;
+    color: white;
+    background: #0d0d11;
     box-sizing: border-box;
-    width: 159px !important;
+    width: 159px;
     border-radius: 0px;
-    padding: 12px 20px 12px 20px;
+    /* padding: 12px 20px 12px 20px; */
     border-style: solid;
     border-width: 2px;
     border-image:linear-gradient(107.19deg, #6B1EF1 2.55%, #CB28E5 61.82%) 1;
@@ -69,4 +71,33 @@
       margin-right: 40px;
   }
 
+  @media screen and(max-width:992px){
+    .emailSubscribe{
+        width:300px !important;
+    }
+    .subscribBtn{
+        width: 120px !important;
+    }
+      
+  }
+
+  @media screen and(max-width:668px){
+    .emailSubscribe{
+        width:250px !important;
+    }
+    .subscribBtn{
+        width: 100px !important;
+    }
+      
+  }
+
+  @media only screen and(max-width:480px){
+    .emailSubscriber{
+        width:200px !important;
+    }
+    .subscribBtn{
+        width: 80px !important;
+    }
+      
+  }
   

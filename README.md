@@ -19,6 +19,6 @@
 ## Available Scripts
 
 -clone from github (https://github.com/mesu-ai/space-ship)
--install ### `nmp install yarn`
+- ### `npm install yarn`
 - ### `yarn start`
 Run Localhost: (http://localhost:3000)

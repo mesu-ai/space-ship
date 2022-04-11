@@ -72,9 +72,14 @@ const RocketLaunch = () => {
         // console.log(value);
         
         if(value==='yes'){
+            
+            
             const upcomingLaunch=rockets.filter(rocket=>rocket.upcoming===true);
             if(upcomingLaunch){
-                checkPagination(upcomingLaunch);
+                 setCurrentPage(1);
+                 checkPagination(upcomingLaunch,1);
+                 paginate(1)
+                 console.log('yes',upcomingLaunch);
 
             }
             
@@ -84,6 +89,7 @@ const RocketLaunch = () => {
 
             if(upcomingLaunch){
                 checkPagination(upcomingLaunch);
+                console.log('no',upcomingLaunch);
 
             }
             
@@ -127,15 +133,10 @@ const RocketLaunch = () => {
         else if(value==='91-95'){
             searchLaunch(1991,1995);
         }
-        else if(value==='90Lt'){
+        else{
             searchLaunch(1900,1990);
         }
         
-        else{
-            
-            // setFilterRockets(rockets);
-
-        }
 
     }
 
@@ -155,23 +156,35 @@ const RocketLaunch = () => {
     }
 
 
-    const checkPagination = React.useCallback((data) => { 
+    const checkPagination = React.useCallback((data,cPage=currentPage) => { 
             setLoading(true);
 
-        //   console.log(data);
+        
            if(data){
-            const indexOfLastPost= currentPage * postsPerPage;
+            // console.log('ckPage',data);
+            // console.log('pagi', Math.ceil(data.length/postsPerPage));
+            // setDisplayRockets(data);
+         
+            const indexOfLastPost= cPage * postsPerPage;
             const indexOfFirstPost= indexOfLastPost - postsPerPage;
+            
+           // console.log('CP',cPage, 'fir',indexOfFirstPost,'las',indexOfLastPost);
+            
             const currentPost= data.slice(indexOfFirstPost,indexOfLastPost);
+            
+            if(currentPost){
+           // console.log('sh',currentPost);
             setShowRockets(currentPost);
-            setDisplayRockets(data);
 
-             setLoading(false);
+            setLoading(false);
+
+            }else{
+                return;
+            } 
 
            }
-           setLoading(false);
+           
             
-
         }, [currentPage, postsPerPage]);
     
 
@@ -183,9 +196,11 @@ const RocketLaunch = () => {
             const upcomingLaunch=rockets.filter(rocket=>rocket.launch_year===`${year}`);
 
             if(upcomingLaunch){
-                setDisplayRockets(upcomingLaunch);
+               // console.log(upcomingLaunch);
+                
                 checkPagination(upcomingLaunch);
-                 setLoading(false);
+                setDisplayRockets(upcomingLaunch);
+                setLoading(false);
                 
 
             }
@@ -200,7 +215,9 @@ const RocketLaunch = () => {
 
 
     const paginate=(pageNumber)=>{
-        setCurrentPage(pageNumber);
+        
+            setCurrentPage(pageNumber);
+        
        // console.log(pageNumber);
     }
 
@@ -211,7 +228,6 @@ const RocketLaunch = () => {
             <SearchBar handleUpcoming={handleUpcoming} handleLaunchYear={handleLaunchYear} handleSearch={handleSearch}S/>
             
             {loading? 
-
             <>
             <Spinner animation="border" variant="danger" className='mt-5'/>
             <p className='text-light'>Data Loading...</p>

@@ -16,18 +16,14 @@ const Footer = () => {
         <div className='footerContainer'>
             <Container>
             <h2 className='newLetter'>Newsletter</h2>
-            <Form className="d-flex justify-content-center" onSubmit={handleSubmit} >
-                <FormControl
-                type="email"
-                placeholder="Email adress"
-                className="emailSubscriber"
-                aria-label="Email"
-               
-                />
-                <Button type='submit' variant="dark" className='searchBtn lastItem px-4'>Subscribe</Button>
+            <Form className="d-flex justify-content-center flex-md-row flex-column" onSubmit={handleSubmit} >
+                
+                <input type="email" className="emailSubscribe mx-auto mx-md-0" placeholder="Email adress" />
+                <div className='d-flex justify-content-center'><button type='submit' className='mt-md-0 mt-2  subscribBtn lastItem px-4'>Subscribe</button></div>
+                
             </Form>
 
-            <div className='d-flex justify-content-between align-items-center' style={{marginTop:'100px'}}>
+            <div className='d-flex flex-md-row flex-column justify-content-between align-items-center' style={{marginTop:'100px'}}>
                 <div href="/" className='d-flex align-items-center'>
                     <img
                         alt="" 
@@ -39,7 +35,7 @@ const Footer = () => {
                     <span className="brandName">SPACE</span>
                 </div>
                 
-                <div>
+                <div className='mt-md-0 mt-3'>
                     <p className='copyWrite'>Space 2020, All rights reserved.
                     </p>
                 </div>
